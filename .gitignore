@@ -1,0 +1,21 @@
+# Ignore config files
+configs/
+*.json
+
+# Ignore data files
+data/
+*.csv
+
+# Ignore logs
+logs/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore IDE files
+.idea/
+.vscode/
+*.swp
+*.swo

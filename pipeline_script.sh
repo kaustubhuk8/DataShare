@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# AWS S3 Configuration
+export AWS_ACCESS_KEY_ID="YOUR_AWS_ACCESS_KEY"
+export AWS_SECRET_ACCESS_KEY="YOUR_AWS_SECRET_KEY"
+export AWS_DEFAULT_REGION="us-west-2"
+
+# Snowflake Configuration
+export SNOWFLAKE_ACCOUNT="YOUR_SNOWFLAKE_ACCOUNT"
+export SNOWFLAKE_USER="YOUR_SNOWFLAKE_USER"
+export SNOWFLAKE_PASSWORD="YOUR_SNOWFLAKE_PASSWORD"
+export SNOWFLAKE_DATABASE="YOUR_DATABASE"
+export SNOWFLAKE_SCHEMA="YOUR_SCHEMA"
+export SNOWFLAKE_WAREHOUSE="YOUR_WAREHOUSE"
+
+# Upload to S3
+aws s3 cp ./sample_transaction_$(date +%Y%m%d).csv s3://dcr-demo-data/transactions/
+
+# Snowflake SQL Command
+snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER -p $SNOWFLAKE_PASSWORD -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -w $SNOWFLAKE_WAREHOUSE -f load_transactions.sql

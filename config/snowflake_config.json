@@ -1,0 +1,10 @@
+{
+  "account": "<account_id>",
+  "username": "<username>",
+  "password": "<password>",
+  "database": "<database_name>",
+  "schema": "<schema_name>",
+  "warehouse": "<warehouse_name>",
+  "table": "<table_name>",
+  "stage": "<stage_name>"
+}

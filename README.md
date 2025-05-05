@@ -1,58 +1,133 @@
-# Data Sharing Project
+# 🔐 Clean Room-Based Secure Data Sharing & Visualization
 
-This project is designed to facilitate secure and efficient data sharing between different systems and services.
+This project enables secure data sharing using Snowflake and AWS, ensuring privacy-preserving analytics. It includes a fully automated ingestion pipeline and an interactive Streamlit dashboard for visualizing aggregated trends.
 
-## Features
+---
 
-- **Data Pipeline**: Processes and loads transaction data from various sources.
-- **Dashboard**: Provides visualization of transaction data.
-- **Configuration**: Supports multiple cloud providers (AWS, Snowflake).
+## 🚀 Features
 
-## Setup
+- **Automated Ingestion Pipeline**
+  - Processes and cleans raw transaction data.
+  - Uploads data to S3 and ingests into Snowflake using external stages and tasks.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/kaustubhuk8/DataShare.git
-   ```
+- **Secure Clean Room Access**
+  - Uses Snowflake views to simulate clean room aggregation.
+  - Prevents exposure of row-level data.
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+- **Interactive Dashboard**
+  - Built with Streamlit, Altair, and Plotly.
+  - Visualizes spend trends, top merchant categories, and regional heatmaps.
 
-3. Configure your environment:
-   - Copy `configs/aws_config.json.example` to `configs/aws_config.json`
-   - Copy `configs/snowflake_config.json.example` to `configs/snowflake_config.json`
-   - Fill in your credentials
+---
 
-4. Run the pipeline:
-   ```bash
-   python pipeline_script.sh
-   ```
+## 🛠️ Tech Stack
 
-## Project Structure
+- **Backend/Data Pipeline**: Python, Boto3, Snowflake Connector, CSV
+- **Cloud**: AWS S3, Snowflake Warehouse & Stages
+- **Dashboard**: Streamlit, Plotly, Altair, Pandas
+
+---
+
+## 📸 Sample Dashboard Screenshots
+
+| Executive Summary | Choropleth Map |
+|-------------------|----------------|
+| ![Summary](assets/summary.png) | ![Map](assets/heatmap.png) |
+
+---
+
+## 🗂️ Folder Structure
 
 ```
 .
-├── configs/            # Configuration files
+├── configs/                  # AWS and Snowflake credentials
 │   ├── aws_config.json
 │   └── snowflake_config.json
-├── data/               # Data files
-├── logs/               # Log files
-├── scripts/            # Pipeline scripts
-├── dashboard.py        # Dashboard application
-├── requirements.txt    # Python dependencies
-└── README.md           # This file
+├── data/                     # Contains raw and processed transaction data
+├── logs/                     # Logs for pipeline execution
+├── dashboard.py              # Streamlit dashboard application
+├── setup.py                  # Data processing and ingestion pipeline
+├── requirements.txt          # Python dependencies
+└── README.md                 # You're here!
 ```
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create a new branch
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/kaustubhuk8/DataShare.git
+cd DataShare
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Add Configuration Files
+
+Create the following JSON files under `configs/`:
+
+- `aws_config.json`
+
+```json
+{
+  "aws_access_key_id": "YOUR_AWS_ACCESS_KEY",
+  "aws_secret_access_key": "YOUR_AWS_SECRET_KEY",
+  "region": "us-west-2",
+  "bucket_name": "your-bucket-name"
+}
+```
+
+- `snowflake_config.json`
+
+```json
+{
+  "account": "your_account",
+  "username": "your_username",
+  "password": "your_password",
+  "database": "your_db",
+  "schema": "PUBLIC",
+  "warehouse": "your_wh",
+  "table": "transactions_raw",
+  "stage": "transactions_stage"
+}
+```
+
+### 4. Run the Pipeline
+
+```bash
+python setup.py
+```
+
+---
+
+## 📊 Launch Dashboard
+
+```bash
+streamlit run dashboard.py
+```
+
+- Interactive filters for date, region, and merchant category.
+- Line charts, heatmaps, and bar graphs to visualize spend data.
+- CSV export of filtered data.
+
+---
+
+## 🤝 Contributing
+
+1. Fork this repo
+2. Create a feature branch
 3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+4. Push your branch
+5. Submit a PR
 
-## License
+---
 
-MIT
+## 📄 License
+
+This project is licensed under the MIT License.

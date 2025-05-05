@@ -1,6 +1,0 @@
-{
-  "aws_access_key_id": "<aws_access_key>",
-  "aws_secret_access_key": "<aws_secret_key>",
-  "region": "us-west-2",
-  "bucket_name": "dcr-project-test"
-}

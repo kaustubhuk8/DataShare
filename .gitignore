@@ -1,3 +1,6 @@
+# Python virtual environment
+venv/
+
 # Ignore config files
 configs/
 *.json
